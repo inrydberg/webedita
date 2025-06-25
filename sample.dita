@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept id="sample_concept">
+  <title>Getting Started with DITA</title>
+  <shortdesc>This is a sample DITA concept topic to demonstrate the live preview functionality with <b>highlighting elements</b>.</shortdesc>
+  <conbody>
+    <section>
+      <title>What is DITA?</title>
+      <p>DITA (Darwin Information Typing Architecture) is an XML-based architecture for authoring, producing, and delivering topic-oriented, information-typed content.</p>
+      
+      <note type="tip">You can edit this content directly in the left pane and see changes in real-time!</note>
+      
+      <ul>
+        <li>Structured authoring</li>
+        <li>Content reuse</li>
+        <li>Conditional publishing</li>
+        <li>Topic-based architecture</li>
+      </ul>
+    </section>
+    
+    <section>
+      <title>Highlighting Elements Demo</title>
+      <p>DITA supports various highlighting elements:</p>
+      <ul>
+        <li><b>Bold text</b> using the b element</li>
+        <li><i>Italic text</i> using the i element</li>
+        <li><u>Underlined text</u> using the u element</li>
+        <li>Text with <sup>superscript</sup> using sup</li>
+        <li>Text with <sub>subscript</sub> using sub</li>
+        <li><line-through>Strikethrough text</line-through> using line-through</li>
+        <li><overline>Overlined text</overline> using overline</li>
+        <li><tt>Teletype text</tt> using tt for monospace</li>
+      </ul>
+    </section>
+    
+    <section>
+      <title>Key Benefits</title>
+      <dl>
+        <dt>Consistency</dt>
+        <dd>Enforces consistent structure and formatting across all content.</dd>
+        <dt>Reusability</dt>
+        <dd>Content can be reused across multiple publications and formats.</dd>
+        <dt>Efficiency</dt>
+        <dd>Streamlines the content creation and maintenance process.</dd>
+      </dl>
+    </section>
+    
+    <section>
+      <title>Code Examples</title>
+      <p>Here's some inline <codeph>code</codeph> and a code block:</p>
+      <codeblock>function hello() {
+  console.log("Hello DITA!");
+}</codeblock>
+    </section>
+  </conbody>
+</concept>

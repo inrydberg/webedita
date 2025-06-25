@@ -1,0 +1,576 @@
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    height: 100vh;
+    background: #f8fafc;
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    background: white;
+    border-bottom: 1px solid #e2e8f0;
+    padding: 1rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+.header-left:hover {
+    opacity: 0.8;
+}
+
+.logo {
+    width: 2rem;
+    height: 2rem;
+    background: #3b82f6;
+    border-radius: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+}
+
+.logo svg {
+    width: 1.25rem;
+    height: 1.25rem;
+}
+
+.title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #1e293b;
+}
+
+.subtitle {
+    font-size: 0.875rem;
+    color: #64748b;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.file-info {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    color: #64748b;
+}
+
+.file-info svg {
+    width: 1rem;
+    height: 1rem;
+}
+
+.btn {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 0.375rem;
+    font-size: 0.875rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.2s;
+}
+
+.btn svg {
+    width: 1rem;
+    height: 1rem;
+}
+
+.btn-primary { 
+    background: #3b82f6; 
+    color: white; 
+}
+
+.btn-primary:hover { 
+    background: #2563eb; 
+}
+
+.btn-secondary { 
+    background: #6b7280; 
+    color: white; 
+}
+
+.btn-secondary:hover { 
+    background: #4b5563; 
+}
+
+.btn-success { 
+    background: #10b981; 
+    color: white; 
+}
+
+.btn-success:hover { 
+    background: #059669; 
+}
+
+.main {
+    flex: 1;
+    display: flex;
+    overflow: hidden;
+    position: relative;
+}
+
+.pane {
+    display: flex;
+    flex-direction: column;
+    background: white;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.pane.collapsed {
+    flex: 0 0 40px !important;
+}
+
+.pane-header {
+    background: #f1f5f9;
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid #e2e8f0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #374151;
+}
+
+.pane-header-left {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.pane-header-left svg {
+    width: 1rem;
+    height: 1rem;
+}
+
+.pane-header-right {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.pane-content {
+    flex: 1;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.collapsed .pane-content {
+    display: none;
+}
+
+.resizer {
+    width: 4px;
+    background: #e2e8f0;
+    cursor: col-resize;
+    transition: background 0.2s;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    z-index: 10;
+}
+
+.resizer:hover {
+    background: #3b82f6;
+}
+
+.drop-zone {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    border: 2px dashed #cbd5e1;
+    margin: 1.5rem;
+    border-radius: 0.5rem;
+    transition: all 0.2s;
+}
+
+.drop-zone.drag-over {
+    border-color: #3b82f6;
+    background: #eff6ff;
+}
+
+.drop-zone-content {
+    text-align: center;
+    max-width: 24rem;
+}
+
+.drop-icon {
+    width: 4rem;
+    height: 4rem;
+    margin: 0 auto 1rem;
+    background: #f1f5f9;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #64748b;
+}
+
+.drop-icon svg {
+    width: 2rem;
+    height: 2rem;
+}
+
+.drop-title {
+    font-size: 1.125rem;
+    font-weight: 500;
+    color: #1e293b;
+    margin-bottom: 0.5rem;
+}
+
+.drop-subtitle {
+    color: #64748b;
+    margin-bottom: 1.5rem;
+}
+
+.drop-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.editor {
+    flex: 1;
+    padding: 1rem;
+}
+
+.textarea {
+    width: 100%;
+    height: 100%;
+    border: 1px solid #d1d5db;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    resize: none;
+    outline: none;
+}
+
+.textarea:focus {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.code-view {
+    flex: 1;
+    padding: 1rem;
+}
+
+.code-block {
+    height: 100%;
+    background: #1e293b;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    overflow: auto;
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    color: #e2e8f0;
+}
+
+.preview {
+    flex: 1;
+    padding: 1.5rem;
+    overflow: auto;
+    background: white;
+}
+
+.preview-empty {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.preview-icon {
+    width: 4rem;
+    height: 4rem;
+    margin: 0 auto 1rem;
+    background: #f1f5f9;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #cbd5e1;
+}
+
+.preview-icon svg {
+    width: 2rem;
+    height: 2rem;
+}
+
+.file-input {
+    display: none;
+}
+
+.btn-small {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.75rem;
+}
+
+.load-file-section {
+    padding: 1rem;
+    border-top: 1px solid #e2e8f0;
+    text-align: center;
+}
+
+/* Prose styles for rendered content */
+.prose h1 { 
+    font-size: 1.875rem; 
+    font-weight: bold; 
+    color: #1e293b; 
+    margin-bottom: 1.5rem; 
+}
+
+.prose h2 { 
+    font-size: 1.5rem; 
+    font-weight: bold; 
+    color: #1e293b; 
+    margin-bottom: 1rem; 
+}
+
+.prose h3 { 
+    font-size: 1.25rem; 
+    font-weight: bold; 
+    color: #1e293b; 
+    margin-bottom: 0.75rem; 
+}
+
+.prose p { 
+    margin-bottom: 1rem; 
+    color: #374151; 
+    line-height: 1.6; 
+}
+
+.prose ul { 
+    list-style: disc; 
+    margin-left: 1.5rem; 
+    margin-bottom: 1rem; 
+}
+
+.prose ol { 
+    list-style: decimal; 
+    margin-left: 1.5rem; 
+    margin-bottom: 1rem; 
+}
+
+.prose li { 
+    margin-bottom: 0.5rem; 
+    color: #374151; 
+}
+
+.prose dl { 
+    margin-bottom: 1rem; 
+}
+
+.prose dt { 
+    font-weight: 600; 
+    color: #1e293b; 
+    margin-top: 1rem; 
+}
+
+.prose dd { 
+    color: #374151; 
+    margin-left: 1rem; 
+}
+
+.prose code { 
+    background: #f3f4f6; 
+    color: #1f2937; 
+    padding: 0.125rem 0.25rem; 
+    border-radius: 0.25rem; 
+    font-size: 0.875rem; 
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace; 
+}
+
+.prose pre { 
+    background: #f3f4f6; 
+    color: #1f2937; 
+    padding: 1rem; 
+    border-radius: 0.5rem; 
+    margin-bottom: 1rem; 
+    overflow-x: auto; 
+}
+
+.prose pre code { 
+    background: transparent; 
+    padding: 0; 
+}
+
+.prose .note { 
+    padding: 1rem; 
+    border-radius: 0.5rem; 
+    margin-bottom: 1rem; 
+    border-left: 4px solid; 
+}
+
+.prose .note-tip { 
+    background: #f0fdf4; 
+    border-color: #22c55e; 
+    color: #166534; 
+}
+
+.prose .note-warning { 
+    background: #fffbeb; 
+    border-color: #f59e0b; 
+    color: #92400e; 
+}
+
+.prose .note-caution { 
+    background: #fef2f2; 
+    border-color: #ef4444; 
+    color: #991b1b; 
+}
+
+.prose .note-important { 
+    background: #faf5ff; 
+    border-color: #a855f7; 
+    color: #6b21a8; 
+}
+
+.prose .note-default { 
+    background: #eff6ff; 
+    border-color: #3b82f6; 
+    color: #1e40af; 
+}
+
+.prose section { 
+    margin-bottom: 2rem; 
+}
+
+.prose .shortdesc { 
+    font-size: 1.125rem; 
+    color: #64748b; 
+    font-style: italic; 
+    margin-bottom: 1.5rem; 
+}
+
+.prose strong { 
+    font-weight: 600; 
+    color: #1e293b; 
+}
+
+.prose em { 
+    font-weight: 500; 
+    color: #1d4ed8; 
+}
+
+.prose table { 
+    width: 100%; 
+    border-collapse: collapse; 
+    border: 1px solid #d1d5db; 
+    margin-bottom: 1.5rem; 
+}
+
+.prose th { 
+    padding: 0.75rem 1rem; 
+    text-align: left; 
+    font-weight: 600; 
+    color: #1e293b; 
+    border: 1px solid #d1d5db; 
+    background: #f9fafb; 
+}
+
+.prose td { 
+    padding: 0.75rem 1rem; 
+    color: #374151; 
+    border: 1px solid #d1d5db; 
+}
+
+.prose a { 
+    color: #2563eb; 
+    text-decoration: underline; 
+}
+
+.prose a:hover { 
+    color: #1d4ed8; 
+}
+
+.prose img { 
+    max-width: 100%; 
+    height: auto; 
+    border-radius: 0.5rem; 
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1); 
+    margin-bottom: 1rem; 
+}
+
+.prose figure { 
+    margin-bottom: 1.5rem; 
+}
+
+/* DITA Highlighting Elements Styles - Fixed spacing */
+.prose b { 
+    font-weight: bold; 
+    color: #1e293b; 
+}
+
+.prose i { 
+    font-style: italic; 
+    color: #374151; 
+}
+
+.prose u { 
+    text-decoration: underline; 
+    color: #374151; 
+}
+
+.prose sup { 
+    vertical-align: super; 
+    font-size: 0.75em; 
+    color: #374151; 
+    line-height: 0;
+}
+
+.prose sub { 
+    vertical-align: sub; 
+    font-size: 0.75em; 
+    color: #374151; 
+    line-height: 0;
+}
+
+.prose .line-through { 
+    text-decoration: line-through; 
+    color: #6b7280; 
+}
+
+.prose .overline { 
+    text-decoration: overline; 
+    color: #374151; 
+}
+
+.prose .tt { 
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace; 
+    background: #f3f4f6; 
+    color: #1f2937; 
+    padding: 0.125rem 0.25rem; 
+    border-radius: 0.25rem; 
+    font-size: 0.875rem; 
+}

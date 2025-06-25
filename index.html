@@ -29,6 +29,12 @@
             display: flex;
             align-items: center;
             gap: 0.75rem;
+            cursor: pointer;
+            transition: opacity 0.2s;
+        }
+        
+        .header-left:hover {
+            opacity: 0.8;
         }
         
         .logo {
@@ -350,11 +356,21 @@
         .prose a:hover { color: #1d4ed8; }
         .prose img { max-width: 100%; height: auto; border-radius: 0.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.1); margin-bottom: 1rem; }
         .prose figure { margin-bottom: 1.5rem; }
+        
+        /* DITA Highlighting Elements Styles */
+        .prose b { font-weight: bold; color: #1e293b; }
+        .prose i { font-style: italic; color: #374151; }
+        .prose u { text-decoration: underline; color: #374151; }
+        .prose sup { vertical-align: super; font-size: 0.75em; color: #374151; }
+        .prose sub { vertical-align: sub; font-size: 0.75em; color: #374151; }
+        .prose .line-through { text-decoration: line-through; color: #6b7280; }
+        .prose .overline { text-decoration: overline; color: #374151; }
+        .prose .tt { font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace; background: #f3f4f6; color: #1f2937; padding: 0.125rem 0.25rem; border-radius: 0.25rem; font-size: 0.875rem; }
     </style>
 </head>
 <body>
     <header class="header">
-        <div class="header-left">
+        <div class="header-left" onclick="resetToStart()">
             <div class="logo">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
@@ -522,12 +538,12 @@
         let isEditing = false;
         let isResizing = false;
 
-        // Sample DITA content
+        // Sample DITA content with highlighting elements
         const sampleDita = `<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
 <concept id="sample_concept">
   <title>Getting Started with DITA</title>
-  <shortdesc>This is a sample DITA concept topic to demonstrate the live preview functionality.</shortdesc>
+  <shortdesc>This is a sample DITA concept topic to demonstrate the live preview functionality with <b>highlighting elements</b>.</shortdesc>
   <conbody>
     <section>
       <title>What is DITA?</title>
@@ -540,6 +556,21 @@
         <li>Content reuse</li>
         <li>Conditional publishing</li>
         <li>Topic-based architecture</li>
+      </ul>
+    </section>
+    
+    <section>
+      <title>Highlighting Elements Demo</title>
+      <p>DITA supports various highlighting elements:</p>
+      <ul>
+        <li><b>Bold text</b> using the &lt;b&gt; element</li>
+        <li><i>Italic text</i> using the &lt;i&gt; element</li>
+        <li><u>Underlined text</u> using the &lt;u&gt; element</li>
+        <li>Text with <sup>superscript</sup> using &lt;sup&gt;</li>
+        <li>Text with <sub>subscript</sub> using &lt;sub&gt;</li>
+        <li><line-through>Strikethrough text</line-through> using &lt;line-through&gt;</li>
+        <li><overline>Overlined text</overline> using &lt;overline&gt;</li>
+        <li><tt>Teletype text</tt> using &lt;tt&gt; for monospace</li>
       </ul>
     </section>
     
@@ -616,6 +647,16 @@
                     const tag = isHeader ? 'th' : 'td';
                     return `<${tag}>${this.processChildren(el)}</${tag}>`;
                 });
+                
+                // DITA Highlighting Elements
+                this.elementMap.set('b', (el) => `<b>${this.processChildren(el)}</b>`);
+                this.elementMap.set('i', (el) => `<i>${this.processChildren(el)}</i>`);
+                this.elementMap.set('u', (el) => `<u>${this.processChildren(el)}</u>`);
+                this.elementMap.set('sup', (el) => `<sup>${this.processChildren(el)}</sup>`);
+                this.elementMap.set('sub', (el) => `<sub>${this.processChildren(el)}</sub>`);
+                this.elementMap.set('line-through', (el) => `<span class="line-through">${this.processChildren(el)}</span>`);
+                this.elementMap.set('overline', (el) => `<span class="overline">${this.processChildren(el)}</span>`);
+                this.elementMap.set('tt', (el) => `<span class="tt">${this.processChildren(el)}</span>`);
             }
 
             processChildren(element) {
@@ -673,6 +714,15 @@
         }
 
         const parser = new DitaParser();
+
+        // Reset to start page function
+        function resetToStart() {
+            if (ditaContent.trim()) {
+                const confirmed = confirm('Are you sure you want to return to the start page? Any unsaved changes will be lost.');
+                if (!confirmed) return;
+            }
+            location.reload();
+        }
 
         // Event handlers
         function handleContentChange() {

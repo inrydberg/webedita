@@ -18,7 +18,7 @@
       </ul>
     </section>
     
-    <section>
+    <section id="highlighting_section">
       <title>Highlighting Elements Demo</title>
       <p>DITA supports various highlighting elements:</p>
       <ul>
@@ -51,6 +51,18 @@
       <codeblock>function hello() {
   console.log("Hello DITA!");
 }</codeblock>
+    </section>
+    
+    <section id="links_section">
+      <title>Links and References</title>
+      <p>DITA supports various types of links using the <codeph>xref</codeph> element:</p>
+      <ul>
+        <li>External link: <xref href="https://www.oasis-open.org/committees/dita/">DITA Technical Committee</xref></li>
+        <li>Another external link: <xref href="https://docs.oasis-open.org/dita/dita/v1.3/dita-v1.3-part0-overview.html">DITA 1.3 Specification</xref></li>
+        <li>Internal reference: <xref href="#sample_concept/highlighting_section">See Highlighting Elements Demo above</xref></li>
+        <li>File reference: <xref href="related-topic.dita">Related Documentation</xref></li>
+      </ul>
+      <note type="tip">Click on any link to navigate. Internal references use the pattern #topic_id/section_id</note>
     </section>
   </conbody>
 </concept>

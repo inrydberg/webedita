@@ -36,7 +36,27 @@ class DitaParser {
         this.elementMap.set('term', (el) => `<em>${this.processChildren(el)}</em>`);
         this.elementMap.set('xref', (el) => {
             const href = el.getAttribute('href') || '#';
-            return `<a href="${href}">${this.processChildren(el)}</a>`;
+            const format = el.getAttribute('format');
+            const scope = el.getAttribute('scope');
+            
+            // Build additional attributes for the anchor tag
+            let additionalAttrs = '';
+            
+            // Handle external scope - open in new tab/window
+            if (scope === 'external') {
+                additionalAttrs += ' target="_blank" rel="noopener noreferrer"';
+            }
+            
+            // Handle format attribute - could be used for styling or other purposes
+            if (format) {
+                additionalAttrs += ` data-format="${format}"`;
+            }
+            
+            // If there's no text content, use the href as display text
+            const textContent = this.processChildren(el);
+            const displayText = textContent.trim() || href;
+            
+            return `<a href="${href}"${additionalAttrs}>${displayText}</a>`;
         });
         this.elementMap.set('image', (el) => {
             const href = el.getAttribute('href') || '';

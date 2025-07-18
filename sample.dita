@@ -59,6 +59,7 @@
       <ul>
         <li>External link: <xref href="https://www.oasis-open.org/committees/dita/">DITA Technical Committee</xref></li>
         <li>Another external link: <xref href="https://docs.oasis-open.org/dita/dita/v1.3/dita-v1.3-part0-overview.html">DITA 1.3 Specification</xref></li>
+        <li>Self-closing external link: <xref href="https://downloads.teradata.com/download/connectivity/odbc-driver/windows" format="html" scope="external"/>.</li>
         <li>Internal reference: <xref href="#sample_concept/highlighting_section">See Highlighting Elements Demo above</xref></li>
         <li>File reference: <xref href="related-topic.dita">Related Documentation</xref></li>
       </ul>

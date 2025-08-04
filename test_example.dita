@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd">
+<task id="editing_database" xml:lang="en-us">
+  <title>Editing a Target Database Profile</title>
+  <shortdesc>To edit an existing database profile, do the following:</shortdesc>
+  <taskbody>
+        <prereq/>
+        <steps>
+            <step>
+                <cmd>Click <uicontrol>Databases</uicontrol> in the main menu. A list of existing
+                    database profiles will be displayed.</cmd>
+            </step>
+            <step>
+                <cmd>Click name of the required database in the list.</cmd>
+            </step>
+            <step>
+                <cmd>Click <uicontrol>Add Interface</uicontrol> to add a new database interface and
+                    specify hostname, port number, database keys and IP version (also SID or service
+                    name for Oracle Database). Click <uicontrol>Save</uicontrol> to apply new
+                    settings.</cmd>
+            </step>
+            <step>
+                <cmd>To add a new proxy for the database, do the following:</cmd>
+                <info>
+                    <fig>
+                        <title>Example of proxy settings</title>
+                        <image href="../configuration/img/new_proxy.png" placement="break"/>
+                    </fig>
+                </info>
+                <substeps>
+                    <substep>
+                        <cmd>Click <uicontrol>Add Proxy</uicontrol>.</cmd>
+                    </substep>
+                    <substep>
+                        <cmd>Select a network interface for the database in the
+                                <uicontrol>Interface</uicontrol> drop-down list.</cmd>
+                    </substep>
+                    <substep>
+                        <cmd>Select a DataSunrise server (node) on which to open a proxy in the
+                                <uicontrol>Server</uicontrol> drop-down list.</cmd>
+                    </substep>
+                    <substep>
+                        <cmd>Select new database host in the <uicontrol>Host</uicontrol> drop-down
+                            list.</cmd>
+                    </substep>
+                    <substep>
+                        <cmd>Specify proxy keys if necessary.</cmd>
+                    </substep>
+                    <substep>
+                        <cmd>Specify port number for the DataSunrise's proxy in the
+                                <uicontrol>Port</uicontrol> text field.</cmd>
+                    </substep>
+                    <substep>
+                        <cmd>Check the <uicontrol>Enabled</uicontrol> check box to activate the
+                            proxy.</cmd>
+                    </substep>
+                    <substep>
+                        <cmd>Check the <uicontrol>Separate Message Handler and Audit
+                                Journal</uicontrol> check box for corresponding settings.</cmd>
+                        <info>
+                            <ul id="ul_m42_ydg_hbb">
+                                <li><uicontrol>Separate Message Handler</uicontrol> check box: When
+                                    checked, a separate Message handler is created for the proxy.
+                                    You can specify the number of threads for the Message
+                                    handler.</li>
+                                <li><uicontrol>Separate Audit Journal</uicontrol> check box: When
+                                    checked, a separate Audit journal is created for the proxy. You
+                                    can specify the number of threads for the Audit journal.</li>
+                            </ul>
+                        </info>
+                    </substep>
+                    <substep>
+                        <cmd>Click <uicontrol>Save</uicontrol> to apply new settings.</cmd>
+                    </substep>
+                </substeps>
+            </step>
+            <step>
+                <cmd>To add a new sniffer to the database, do the following:</cmd>
+                <info>
+                    <fig>
+                        <title>Example of sniffer settings</title>
+                        <image href="../configuration/img/new_sniffer.png" placement="break"/>
+                    </fig>
+                </info>
+                <substeps>
+                    <substep>
+                        <cmd>Click <uicontrol>Add Sniffer</uicontrol>.</cmd>
+                    </substep>
+                    <substep>
+                        <cmd>Select a required network interface in the <uicontrol>Instance
+                                Interface</uicontrol> drop-down list. An Interface has an IP address
+                            and a port number on which a target server is listening. DataSunrise
+                            opens a proxy or a sniffer on an interface. A database instance can
+                            include several interfaces.</cmd>
+                    </substep>
+                    <substep>
+                        <cmd>Select a DataSunrise server (node) to open a sniffer on, in the
+                                <uicontrol>Server</uicontrol> drop-down list.</cmd>
+                    </substep>
+                    <substep>
+                        <cmd>Select a required network device (network adapter) in the
+                                <uicontrol>Device</uicontrol> drop-down list.</cmd>
+                    </substep>
+                    <substep>
+                        <cmd>Specify Sniffer keys if necessary. <wintitle>Sniffer key</wintitle> is
+                            a database server's private SSL key. It is used to decrypt the traffic
+                            flowing between the client and the database.</cmd>
+                    </substep>
+                    <substep>
+                        <cmd>Check the <uicontrol>Enabled</uicontrol> check box to activate a
+                            current sniffer.</cmd>
+                    </substep>
+                    <substep>
+                        <cmd>Click <uicontrol>Save</uicontrol> to apply new settings.</cmd>
+                    </substep>
+                </substeps>
+                <info>
+                    <note>If the database server, database client and the firewall are installed on the same
+                        Windows-powered local machine, the DataSunrise sniffer will not be able to
+                        capture network traffic.</note>
+                </info>
+            </step>
+            <step>
+                <cmd>Click <uicontrol>Actions → Update Metadata</uicontrol> to update the database's
+                    metadata.</cmd>
+                <info>
+                    <note>Database's metadata contains information about the database structure, tables'
+                        properties, etc. DataSunrise creates database metadata copy in the
+                            <wintitle>dictionary.db</wintitle> file which is located within the
+                        program installation folder, and uses it for processing of the database's
+                        traffic. DataSunrise keeps metadata copy up to date automatically, but if
+                        some serious error occurs or the database were updated directly (bypassing
+                        DataSunrise), you should update the metadata manually by clicking
+                            <uicontrol>Update Metadata</uicontrol>. If you update your target
+                        database often directly, we recommend you to configure a Periodic Metadata
+                        Update task and run it as often as you update the database (refer to subs,
+                            <xref href="update_metadata.dita#adding_database"/>).</note>
+                </info>
+            </step>
+            <step>
+                <cmd>Click <uicontrol>Actions → Test Connections</uicontrol> to test a connection
+                    between the DataSunrise server and the target database. Enter required
+                    credentials in the <wintitle>Connection to Database</wintitle> window.</cmd>
+            </step>
+        </steps>
+    </taskbody>
+</task>

@@ -1,69 +1,123 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
-<concept id="sample_concept">
-  <title>Getting Started with DITA</title>
-  <shortdesc>This is a sample DITA concept topic to demonstrate the live preview functionality with <b>highlighting elements</b>.</shortdesc>
-  <conbody>
-    <section>
-      <title>What is DITA?</title>
-      <p>DITA (Darwin Information Typing Architecture) is an XML-based architecture for authoring, producing, and delivering topic-oriented, information-typed content.</p>
-      
-      <note type="tip">You can edit this content directly in the left pane and see changes in real-time!</note>
-      
-      <ul>
-        <li>Structured authoring</li>
-        <li>Content reuse</li>
-        <li>Conditional publishing</li>
-        <li>Topic-based architecture</li>
-      </ul>
-    </section>
-    
-    <section id="highlighting_section">
-      <title>Highlighting Elements Demo</title>
-      <p>DITA supports various highlighting elements:</p>
-      <ul>
-        <li><b>Bold text</b> using the b element</li>
-        <li><i>Italic text</i> using the i element</li>
-        <li><u>Underlined text</u> using the u element</li>
-        <li>Text with <sup>superscript</sup> using sup</li>
-        <li>Text with <sub>subscript</sub> using sub</li>
-        <li><line-through>Strikethrough text</line-through> using line-through</li>
-        <li><overline>Overlined text</overline> using overline</li>
-        <li><tt>Teletype text</tt> using tt for monospace</li>
-      </ul>
-    </section>
-    
-    <section>
-      <title>Key Benefits</title>
-      <dl>
-        <dt>Consistency</dt>
-        <dd>Enforces consistent structure and formatting across all content.</dd>
-        <dt>Reusability</dt>
-        <dd>Content can be reused across multiple publications and formats.</dd>
-        <dt>Efficiency</dt>
-        <dd>Streamlines the content creation and maintenance process.</dd>
-      </dl>
-    </section>
-    
-    <section>
-      <title>Code Examples</title>
-      <p>Here's some inline <codeph>code</codeph> and a code block:</p>
-      <codeblock>function hello() {
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd">
+<task id="sample_task">
+  <title>Getting Started with DITA - Complete Guide</title>
+  <shortdesc>This is a comprehensive sample DITA task topic to demonstrate the live preview functionality including <b>steps and substeps</b> with proper numbering.</shortdesc>
+  <taskbody>
+    <prereq>Before you begin, make sure you have access to a web browser and can edit XML files.</prereq>
+    <steps>
+      <step>
+        <cmd>Open <uicontrol>Web eDITA</uicontrol> in your browser and familiarize yourself with the interface.</cmd>
+        <info>
+          <p>The interface consists of two main panes: the DITA Source pane on the left and the Live Preview pane on the right.</p>
+        </info>
+      </step>
+      <step>
+        <cmd>Learn about DITA highlighting elements by reviewing the examples below:</cmd>
+        <info>
+          <ul>
+            <li><b>Bold text</b> using the b element</li>
+            <li><i>Italic text</i> using the i element</li>
+            <li><u>Underlined text</u> using the u element</li>
+            <li>Text with <sup>superscript</sup> using sup</li>
+            <li>Text with <sub>subscript</sub> using sub</li>
+            <li><line-through>Strikethrough text</line-through> using line-through</li>
+            <li><overline>Overlined text</overline> using overline</li>
+            <li><tt>Teletype text</tt> using tt for monospace</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>To create your own DITA content with steps and substeps, follow this process:</cmd>
+        <substeps>
+          <substep>
+            <cmd>Create a new <wintitle>task</wintitle> document using the proper DOCTYPE declaration.</cmd>
+          </substep>
+          <substep>
+            <cmd>Add a descriptive <uicontrol>title</uicontrol> and <uicontrol>shortdesc</uicontrol> elements.</cmd>
+          </substep>
+          <substep>
+            <cmd>Include a <uicontrol>prereq</uicontrol> element if there are prerequisites.</cmd>
+            <info>Prerequisites help users understand what they need before starting the task.</info>
+          </substep>
+          <substep>
+            <cmd>Structure your main content using <uicontrol>steps</uicontrol> elements.</cmd>
+          </substep>
+          <substep>
+            <cmd>Use <uicontrol>substeps</uicontrol> when you need to break down a complex step into smaller actions.</cmd>
+          </substep>
+        </substeps>
+      </step>
+      <step>
+        <cmd>Understand different DITA elements by examining these examples:</cmd>
+        <info>
+          <section>
+            <title>Code Examples</title>
+            <p>Here's some inline <codeph>code</codeph> and a code block:</p>
+            <codeblock>function hello() {
   console.log("Hello DITA!");
 }</codeblock>
-    </section>
-    
-    <section id="links_section">
-      <title>Links and References</title>
-      <p>DITA supports various types of links using the <codeph>xref</codeph> element:</p>
-      <ul>
-        <li>External link: <xref href="https://www.oasis-open.org/committees/dita/">DITA Technical Committee</xref></li>
-        <li>Another external link: <xref href="https://docs.oasis-open.org/dita/dita/v1.3/dita-v1.3-part0-overview.html">DITA 1.3 Specification</xref></li>
-        <li>Self-closing external link: <xref href="https://downloads.teradata.com/download/connectivity/odbc-driver/windows" format="html" scope="external"/>.</li>
-        <li>Internal reference: <xref href="#sample_concept/highlighting_section">See Highlighting Elements Demo above</xref></li>
-        <li>File reference: <xref href="related-topic.dita">Related Documentation</xref></li>
-      </ul>
-      <note type="tip">Click on any link to navigate. Internal references use the pattern #topic_id/section_id</note>
-    </section>
-  </conbody>
-</concept>
+          </section>
+          
+          <section>
+            <title>Notes and Warnings</title>
+            <note type="tip">You can edit this content directly in the left pane and see changes in real-time!</note>
+            <note type="warning">Always validate your DITA files before publishing.</note>
+            <note type="important">Proper structure is essential for DITA documents.</note>
+          </section>
+          
+          <section>
+            <title>Definition Lists</title>
+            <dl>
+              <dt>Steps</dt>
+              <dd>Main numbered actions that users need to perform, displayed as 1., 2., 3., etc.</dd>
+              <dt>Substeps</dt>
+              <dd>Secondary actions within a step, displayed as a) b) c) etc.</dd>
+              <dt>Prerequisites</dt>
+              <dd>Requirements that must be met before starting the task.</dd>
+            </dl>
+          </section>
+        </info>
+      </step>
+      <step>
+        <cmd>Test your DITA content by using the preview functionality:</cmd>
+        <substeps>
+          <substep>
+            <cmd>Make changes in the left pane editor.</cmd>
+          </substep>
+          <substep>
+            <cmd>Observe how the preview updates automatically in the right pane.</cmd>
+          </substep>
+          <substep>
+            <cmd>Notice how steps are numbered (1., 2., 3.) and substeps are lettered (a) b) c).</cmd>
+            <info>The numbering and lettering happen automatically - you don't need to add numbers manually!</info>
+          </substep>
+        </substeps>
+      </step>
+      <step>
+        <cmd>Explore additional DITA features like links and references:</cmd>
+        <info>
+          <ul>
+            <li>External link: <xref href="https://www.oasis-open.org/committees/dita/" scope="external">DITA Technical Committee</xref></li>
+            <li>Another external link: <xref href="https://docs.oasis-open.org/dita/dita/v1.3/dita-v1.3-part0-overview.html" scope="external">DITA 1.3 Specification</xref></li>
+            <li>File reference: <xref href="related-topic.dita">Related Documentation</xref></li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Save your work when you're finished:</cmd>
+        <substeps>
+          <substep>
+            <cmd>Click the <uicontrol>Save</uicontrol> button in the header.</cmd>
+          </substep>
+          <substep>
+            <cmd>Choose a filename with the <codeph>.dita</codeph> extension.</cmd>
+          </substep>
+          <substep>
+            <cmd>Store the file in your preferred location.</cmd>
+          </substep>
+        </substeps>
+      </step>
+    </steps>
+  </taskbody>
+</task>

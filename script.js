@@ -75,6 +75,34 @@ class DitaParser {
             return `<${tag}>${this.processChildren(el)}</${tag}>`;
         });
         
+        // DITA Task Elements - Steps and Substeps
+        this.elementMap.set('prereq', (el) => `<div class="prereq">${this.processChildren(el)}</div>`);
+        this.elementMap.set('steps', (el) => {
+            // Reset step counter for each steps container
+            this.currentStepNumber = 0;
+            return `<ol class="steps">${this.processChildren(el)}</ol>`;
+        });
+        this.elementMap.set('step', (el) => {
+            this.currentStepNumber = (this.currentStepNumber || 0) + 1;
+            return `<li class="step" data-step="${this.currentStepNumber}">${this.processChildren(el)}</li>`;
+        });
+        this.elementMap.set('substeps', (el) => {
+            // Reset substep counter for each substeps container
+            this.currentSubstepLetter = 0;
+            return `<ol class="substeps">${this.processChildren(el)}</ol>`;
+        });
+        this.elementMap.set('substep', (el) => {
+            this.currentSubstepLetter = (this.currentSubstepLetter || 0) + 1;
+            const letter = String.fromCharCode(96 + this.currentSubstepLetter); // a, b, c, etc.
+            return `<li class="substep" data-substep="${letter}">${this.processChildren(el)}</li>`;
+        });
+        this.elementMap.set('cmd', (el) => `<div class="cmd">${this.processChildren(el)}</div>`);
+        this.elementMap.set('info', (el) => `<div class="info">${this.processChildren(el)}</div>`);
+        
+        // UI Control Elements
+        this.elementMap.set('uicontrol', (el) => `<strong class="uicontrol">${this.processChildren(el)}</strong>`);
+        this.elementMap.set('wintitle', (el) => `<strong class="wintitle">${this.processChildren(el)}</strong>`);
+        
         // DITA Highlighting Elements
         this.elementMap.set('b', (el) => `<b>${this.processChildren(el)}</b>`);
         this.elementMap.set('i', (el) => `<i>${this.processChildren(el)}</i>`);

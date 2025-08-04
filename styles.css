@@ -599,7 +599,7 @@ body {
     counter-increment: step-counter;
     margin-bottom: 1.5rem;
     position: relative;
-    padding-left: 3rem;
+    padding-left: 1.75rem;
     display: block;
 }
 
@@ -612,7 +612,7 @@ body {
     color: #1e293b;
     font-size: 1rem;
     line-height: 1.6;
-    width: 2.5rem;
+    width: 1.5rem;
 }
 
 /* Substeps Container */
@@ -630,7 +630,7 @@ body {
     counter-increment: substep-counter;
     margin-bottom: 0.75rem;
     position: relative;
-    padding-left: 3rem;
+    padding-left: 1.75rem;
     display: block;
 }
 
@@ -643,7 +643,7 @@ body {
     color: #1e293b;
     font-size: 1rem;
     line-height: 1.6;
-    width: 2.5rem;
+    width: 1.5rem;
 }
 
 .prose .cmd {

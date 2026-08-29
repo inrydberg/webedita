@@ -36,7 +36,7 @@
                                 <uicontrol>Interface</uicontrol> drop-down list.</cmd>
                     </substep>
                     <substep>
-                        <cmd>Select a DataSunrise server (node) on which to open a proxy in the
+                        <cmd>Select an application server (node) on which to open a proxy in the
                                 <uicontrol>Server</uicontrol> drop-down list.</cmd>
                     </substep>
                     <substep>
@@ -47,7 +47,7 @@
                         <cmd>Specify proxy keys if necessary.</cmd>
                     </substep>
                     <substep>
-                        <cmd>Specify port number for the DataSunrise's proxy in the
+                        <cmd>Specify port number for the application's proxy in the
                                 <uicontrol>Port</uicontrol> text field.</cmd>
                     </substep>
                     <substep>
@@ -89,12 +89,12 @@
                     <substep>
                         <cmd>Select a required network interface in the <uicontrol>Instance
                                 Interface</uicontrol> drop-down list. An Interface has an IP address
-                            and a port number on which a target server is listening. DataSunrise
+                            and a port number on which a target server is listening. The application
                             opens a proxy or a sniffer on an interface. A database instance can
                             include several interfaces.</cmd>
                     </substep>
                     <substep>
-                        <cmd>Select a DataSunrise server (node) to open a sniffer on, in the
+                        <cmd>Select an application server (node) to open a sniffer on, in the
                                 <uicontrol>Server</uicontrol> drop-down list.</cmd>
                     </substep>
                     <substep>
@@ -116,7 +116,7 @@
                 </substeps>
                 <info>
                     <note>If the database server, database client and the firewall are installed on the same
-                        Windows-powered local machine, the DataSunrise sniffer will not be able to
+                        Windows-powered local machine, the application sniffer will not be able to
                         capture network traffic.</note>
                 </info>
             </step>
@@ -125,12 +125,12 @@
                     metadata.</cmd>
                 <info>
                     <note>Database's metadata contains information about the database structure, tables'
-                        properties, etc. DataSunrise creates database metadata copy in the
+                        properties, etc. The application creates database metadata copy in the
                             <wintitle>dictionary.db</wintitle> file which is located within the
                         program installation folder, and uses it for processing of the database's
-                        traffic. DataSunrise keeps metadata copy up to date automatically, but if
+                        traffic. The application keeps metadata copy up to date automatically, but if
                         some serious error occurs or the database were updated directly (bypassing
-                        DataSunrise), you should update the metadata manually by clicking
+                        the application), you should update the metadata manually by clicking
                             <uicontrol>Update Metadata</uicontrol>. If you update your target
                         database often directly, we recommend you to configure a Periodic Metadata
                         Update task and run it as often as you update the database (refer to subs,
@@ -139,7 +139,7 @@
             </step>
             <step>
                 <cmd>Click <uicontrol>Actions → Test Connections</uicontrol> to test a connection
-                    between the DataSunrise server and the target database. Enter required
+                    between the application server and the target database. Enter required
                     credentials in the <wintitle>Connection to Database</wintitle> window.</cmd>
             </step>
         </steps>

@@ -4,6 +4,8 @@ Web eDITA is a lightweight browser-based editor for quick DITA/XML edits, valida
 
 Live app: [https://webedita.netlify.app/](https://webedita.netlify.app/)
 
+![Web eDITA demo](demo.png)
+
 ## What It Does
 
 - Opens DITA/XML content from a file, drag-and-drop, or direct editing.
